@@ -39,6 +39,10 @@ footer {
   color: #fff; /* Light text color for section headings */
 }
 
+#portfolio p.card-text-h {
+  color: white
+}
+
 #portfolio .card {
   background-color: #333; /* Dark card background color */
   color: #eee; /* Light text color for card content */
