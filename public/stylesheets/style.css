@@ -40,7 +40,101 @@ footer {
 }
 
 #portfolio p.card-text-h {
-  color: white
+  color: rgb(5, 99, 193)
+}
+
+#portfolio .card {
+  background-color: #333; /* Dark card background color */
+  color: #eee; /* Light text color for card content */
+  margin-bottom: 30px; /* Added margin between cards */
+}
+
+#portfolio .card-img-top {
+  border: none
+}
+
+#portfolio .card-container {
+  padding: 20px; /* Add padding to create buffer room */
+  text-align: center; /* Center the contents */
+  border: 2px solid #555; /* Dark border at the bottom of the card */
+}
+
+
+#portfolio .card-title {
+  color: #fff; /* Light text color for card titles */
+}
+
+#portfolio .card-text {
+  color: #ccc; /* Slightly lighter text color for card description */
+}
+
+#portfolio .card-body {
+  border-top: 2px solid #555
+}
+
+/* CSS for confirmation overlay */
+#confirmation-overlay.overlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(0, 180, 0, 0.8);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  z-index: 999; /* Ensure the overlay appears on top of other elements */
+}
+
+#confirmation-overlay.overlay .confirmation-content {
+  display: inline-block;
+}
+
+
+
+
+body {
+  background-color: #222;
+  color: #eee;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.navbar {
+  background-color: #333 !important; /* Added !important to override Bootstrap's styles */
+  height: 70px;
+}
+
+.navbar-light .navbar-brand {
+  color: #eee;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #eee;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #fff;
+}
+
+footer {
+  background-color: #333;
+  color: #eee;
+}
+
+/* Custom styles for portfolio section */
+#portfolio {
+  background-color: #222;
+}
+
+#portfolio h2 {
+  color: #fff; /* Light text color for section headings */
+}
+
+#portfolio p.card-text-h {
+  color: rgb(5, 99, 193)
 }
 
 #portfolio .card {
