@@ -1,15 +1,29 @@
-// index.pug
-
 doctype html
 html(lang="en")
   head
     meta(charset="UTF-8")
     title #{title} 
     link(rel='stylesheet', href='./stylesheets/style.css')
+    // Add Bootstrap CDN for styling
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
   body
-    header
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      .container
+        a.navbar-brand(href='#') Alex's Website
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarNav.collapse.navbar-collapse
+          ul.navbar-nav.ml-auto
+            li.nav-item
+              a.nav-link(href='/') Home
+            li.nav-item
+              a.nav-link(href='/about') About
+            li.nav-item
+              a.nav-link(href='/portfolio') Portfolio
+            // Add more links as needed
+    header.container.text-center.py-5(id='home')
       h1 Welcome to Alex's Website
-    main
+    main.container.text-center.py-5
       p This is the main content of my website.
-    footer
+    footer.container.text-center.py-3
       p Updated 04/26/2024 : 23:07
