@@ -9,29 +9,11 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-var fs = require('fs'),
-    http = require('http'),
-    https = require('https'),
-    express = require('express');
-
-var httpsPort = 443;
-var httpPort = 80;
-
-var options = {
-    key: fs.readFileSync(__dirname + '/ssl/privatekey.key'),
-    cert: fs.readFileSync(__dirname + '/ssl/certificate.crt'),
-};
-
-// HTTPS server
-var server = https.createServer(options, app).listen(httpsPort, function(){
-    console.log("HTTPS Server listening on port: " + httpsPort);
+// Middleware to log IP address
+app.use(function(req, res, next) {
+  console.log('Incoming request from IP:', req.ip);
+  next();
 });
-
-// HTTP Server redirects to HTTPS
-var httpServer = http.createServer(function(req, res) {
-  res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
-  res.end();
-}).listen(80);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -45,6 +27,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+// Start the HTTP server
+var httpPort = 8080;
+app.listen(httpPort, function() {
+  console.log("HTTP Server listening on port: " + httpPort);
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -60,6 +48,19 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+// Handle SIGTERM 
+process.on('SIGTERM', () => {
+  console.info('Received SIGTERM signal');
+  
+  // Perform cleanup tasks here
+  // For example, close database connections, release resources, etc.
+
+  server.close(() => {
+    console.log('HTTP server closed');
+    process.exit(0);
+  });
 });
 
 module.exports = app;

@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: site-ingress
+  namespace: default
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: testapp-service
+                port:
+                  number: 80
+  tls:
+    - secretName: cert-testing
+
