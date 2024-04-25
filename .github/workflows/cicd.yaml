@@ -36,8 +36,8 @@ jobs:
           files: |
             src/main/helm/**
     outputs:
-      site-changed: ${{ steps.changed-site-files.any_changed }}
-      infra-changed: ${{ steps.changed-site-files.any_changed }}
+      site-changed: ${{ steps.changed-site-files.outputs.any_changed }}
+      infra-changed: ${{ steps.changed-site-files.outputs.any_changed }}
   
   build-push-image:
     runs-on: ubuntu-latest
