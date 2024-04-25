@@ -38,8 +38,8 @@ app.post('/submit', function(req, res) {
   
   // Handle the form data (TODO)
   
-  // Send a response back to the client
-  res.send('Form submitted successfully!');
+  // Render the page with the confirmation message
+  res.render('index', { title: 'Form Submitted', confirmation: 'Form submitted successfully!', submitted: true });
 });
 
 // catch 404 and forward to error handler

@@ -67,3 +67,24 @@ footer {
 #portfolio .card-body {
   border-top: 2px solid #555
 }
+
+/* CSS for confirmation overlay */
+#confirmation-overlay.overlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(0, 180, 0, 0.8);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  z-index: 999; /* Ensure the overlay appears on top of other elements */
+}
+
+#confirmation-overlay.overlay .confirmation-content {
+  display: inline-block;
+}
+
+
+
+
