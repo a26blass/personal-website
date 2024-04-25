@@ -94,7 +94,7 @@ jobs:
       - name: Deploy the new site to the cluster with helm
         if: |
           needs.check-changed-files.outputs.site-changed == 'true' ||
-          needs.build-push-image.result == 'skipped' && needs.check-changed-files.outputs.infra-changed == 'true')
+          (needs.build-push-image.result == 'skipped' && needs.check-changed-files.outputs.infra-changed == 'true')
         run: |
           helm upgrade --install website src/main/helm --set image.tag=${{ env.DOCKER_TAG }}
 
