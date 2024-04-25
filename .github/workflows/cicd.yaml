@@ -59,11 +59,9 @@ jobs:
         with:
           version: '>= 363.0.0'
           project_id: ${{ env.GCP_PROJECT_ID }}
-      - name: Configure Docker with GCloud CLI
-        run: |
-          gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://us-east1-docker.pkg.dev
       - name: Push docker image to GCR
         run: |
+          gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://us-east1-docker.pkg.dev &&
           docker push gcr.io/${{ env.GCP_PROJECT_ID }}/${{ env.IMAGE_NAME }}:${{ env.DOCKER_TAG }}
   
   deploy-service-to-gcp:
