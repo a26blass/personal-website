@@ -61,7 +61,7 @@ jobs:
           project_id: ${{ env.GCP_PROJECT_ID }}
       - name: Configure Docker with GCloud CLI
         run: |
-          gcloud auth configure-docker --quiet us-east1-docker.pkg.dev
+          gcloud auth configure-docker --quiet
       - name: Push docker image to GCR
         run: |
           docker push gcr.io/${{ env.GCP_PROJECT_ID }}/${{ env.IMAGE_NAME }}:${{ env.DOCKER_TAG }}
