@@ -11,7 +11,7 @@ env:
   GCP_PROJECT_ID: personal-website-421100
   GCP_REGION: us-east1-d
   DOCKER_TAG: ${{ github.sha }}
-  IMAGE_NAME: testapp
+  IMAGE_NAME: personal-site
 
 jobs:
   check-changed-files:
