@@ -22,9 +22,10 @@ html(lang="en")
               a.nav-link(href='#portfolio') Portfolio
             li.nav-item
               a.nav-link(href='#contact') Contact
-            li.nav-item.ml-2
+            // Add GitHub link with image and provide right margin
+            li.nav-item.mr-3
               a.nav-link(href='https://github.com/a26blass', target='_blank')
-                img(src='/images/github-mark-white.png', alt='GitHub', width='20', height='20')
+                img(src='/images/github-mark-white.png', alt='GitHub', width='30', height='30')
 
     // About Section
     section#about.container.py-5
@@ -38,16 +39,16 @@ html(lang="en")
         .col-md-6
           .card
             .card-container
-              img.card-img-top(src='project1.jpg', alt='Spring 2024')
+              h6.card-title.text-center Spring 2024
               .card-body
-                h5.card-title.text-center Cloud Computing (15-319) 
+                p.card-text.text-center Cloud Computing (15-319) 
                 p.card-text.text-center Description 
         .col-md-6
           .card
             .card-container
-              img.card-img-top(src='project1.jpg', alt='July 2023 - Present')
+              h6.card-title.text-center July 2023 - Present
               .card-body
-                h5.card-title.text-center TA - 15-122 
+                p.card-text.text-center 15-122 
                 p.card-text.text-center Description 
 
     // Contact Section
@@ -67,7 +68,7 @@ html(lang="en")
         button.btn.btn-primary(type='submit') Submit
       
     footer.container.text-center.py-3
-      p Designed by Alex Blass, last updated April 2024
+      p © 2024 Alex's Website. All rights reserved.
       ul.list-inline
         li.list-inline-item
           a(href='https://github.com/a26blass', target='_blank') GitHub
