@@ -3,30 +3,74 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     title #{title} 
-    link(rel='stylesheet', href='./stylesheets/style.css')
     // Add Bootstrap CDN for styling
     link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
+    link(rel='stylesheet', href='./stylesheets/style.css')
   body
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
       .container
-        a.navbar-brand(href='#') Alex's Website
+        a.navbar-brand(href='#') Alex Blass
         button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
           span.navbar-toggler-icon
-        #navbarNav.collapse.navbar-collapse
-          ul.navbar-nav.ml-auto
+        #navbarNav.collapse.navbar-collapse.d-flex.justify-content-end
+          ul.navbar-nav
             li.nav-item
               a.nav-link(href='/') Home
             li.nav-item
-              a.nav-link(href='/about') About
+              a.nav-link(href='#about') About
             li.nav-item
-              a.nav-link(href='/portfolio') Portfolio
-            // Add GitHub link with image
+              a.nav-link(href='#portfolio') Portfolio
             li.nav-item
+              a.nav-link(href='#contact') Contact
+            li.nav-item.ml-2
               a.nav-link(href='https://github.com/a26blass', target='_blank')
-                img(src='/images/github-mark-white.png', alt='GitHub', width='30', height='30')
-    header.container.text-center.py-5(id='home')
-      h1 Welcome to Alex's Website
-    main.container.text-center.py-5
-      p This is the main content of my website.
+                img(src='/images/github-mark-white.png', alt='GitHub', width='20', height='20')
+
+    // About Section
+    section#about.container.py-5
+      h2 About Me
+      p I'm Computer Science student at Carnegie Mellon University
+      
+    // Portfolio Section
+    section#portfolio.container.py-5
+      h2 Portfolio
+      .row
+        .col-md-6
+          .card
+            .card-container
+              img.card-img-top(src='project1.jpg', alt='Spring 2024')
+              .card-body
+                h5.card-title.text-center Cloud Computing (15-319) 
+                p.card-text.text-center Description 
+        .col-md-6
+          .card
+            .card-container
+              img.card-img-top(src='project1.jpg', alt='July 2023 - Present')
+              .card-body
+                h5.card-title.text-center TA - 15-122 
+                p.card-text.text-center Description 
+
+    // Contact Section
+    section#contact.container.py-5
+      h2 Contact Me
+      p Have a question or want to work together? Feel free to reach out to me!
+      form
+        .form-group
+          label(for='name') Name
+          input#name.form-control(type='text', placeholder='Enter your name')
+        .form-group
+          label(for='email') Email
+          input#email.form-control(type='email', placeholder='Enter your email')
+        .form-group
+          label(for='message') Message
+          textarea#message.form-control(rows='3', placeholder='Enter your message')
+        button.btn.btn-primary(type='submit') Submit
+      
     footer.container.text-center.py-3
-      p Updated 04/26/2024 : 23:07
+      p Designed by Alex Blass, last updated April 2024
+      ul.list-inline
+        li.list-inline-item
+          a(href='https://github.com/a26blass', target='_blank') GitHub
+        li.list-inline-item
+          a(href='https://linkedin.com/in/yourprofile', target='_blank') LinkedIn
+        // Add more social media links

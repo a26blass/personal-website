@@ -1,31 +1,68 @@
 body {
-  background-color: #222; /* Dark background color */
-  color: #eee; /* Light text color */
+  background-color: #222;
+  color: #eee;
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
-  padding: 50px;
 }
 
 a {
-  color: #00B7FF; /* Link color */
+  color: #00B7FF;
 }
 
 .navbar {
-  background-color: #333; /* Darker navbar background color */
+  background-color: #333 !important; /* Added !important to override Bootstrap's styles */
 }
 
 .navbar-light .navbar-brand {
-  color: #eee; /* Light color for navbar brand */
+  color: #eee;
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: #eee; /* Light color for navbar links */
+  color: #eee;
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
-  color: #fff; /* Light color for navbar links on hover */
+  color: #fff;
 }
 
 footer {
-  background-color: #333; /* Darker footer background color */
-  color: #eee; /* Light text color for footer */
+  background-color: #333;
+  color: #eee;
+}
+
+/* Custom styles for portfolio section */
+#portfolio {
+  background-color: #222;
+}
+
+#portfolio h2 {
+  color: #fff; /* Light text color for section headings */
+}
+
+#portfolio .card {
+  background-color: #333; /* Dark card background color */
+  color: #eee; /* Light text color for card content */
+  margin-bottom: 30px; /* Added margin between cards */
+}
+
+#portfolio .card-img-top {
+  border: none
+}
+
+#portfolio .card-container {
+  padding: 20px; /* Add padding to create buffer room */
+  text-align: center; /* Center the contents */
+  border: 2px solid #555; /* Dark border at the bottom of the card */
+}
+
+
+#portfolio .card-title {
+  color: #fff; /* Light text color for card titles */
+}
+
+#portfolio .card-text {
+  color: #ccc; /* Slightly lighter text color for card description */
+}
+
+#portfolio .card-body {
+  border-top: 2px solid #555
 }
