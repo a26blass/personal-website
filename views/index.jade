@@ -55,18 +55,18 @@ html(lang="en")
     section#contact.container.py-5
       h2 Contact Me
       p Have a question or want to work together? Feel free to reach out to me!
-      form
+      form(action='/submit', method='post')
         .form-group
           label(for='name') Name
-          input#name.form-control(type='text', placeholder='Enter your name')
+          input#name.form-control(type='text', name='name', placeholder='Enter your name')
         .form-group
           label(for='email') Email
-          input#email.form-control(type='email', placeholder='Enter your email')
+          input#email.form-control(type='email', name='email', placeholder='Enter your email')
         .form-group
           label(for='message') Message
-          textarea#message.form-control(rows='3', placeholder='Enter your message')
+          textarea#message.form-control(name='message', rows='3', placeholder='Enter your message')
         button.btn.btn-primary(type='submit') Submit
-      
+
     footer.container.text-center.py-3
       p Created by Alex Blass, updated April 2024 
       ul.list-inline

@@ -9,12 +9,6 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-// Middleware to log IP address
-app.use(function(req, res, next) {
-  console.log('Incoming request from IP:', req.ip);
-  next();
-});
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -32,6 +26,20 @@ app.use('/users', usersRouter);
 var httpPort = 8080;
 app.listen(httpPort, function() {
   console.log("HTTP Server listening on port: " + httpPort);
+});
+
+// POST request handler for form submission
+app.post('/submit', function(req, res) {
+  var name = req.body.name; // Get name from form data
+  var email = req.body.email; // Get email from form data
+  var message = req.body.message; // Get message from form data
+
+  console.log('New Message: ' + name + ' :: ' + email + ' :: ' + message)
+  
+  // Handle the form data (TODO)
+  
+  // Send a response back to the client
+  res.send('Form submitted successfully!');
 });
 
 // catch 404 and forward to error handler
@@ -55,7 +63,6 @@ process.on('SIGTERM', () => {
   console.info('Received SIGTERM signal');
   
   // Perform cleanup tasks here
-  // For example, close database connections, release resources, etc.
 
   server.close(() => {
     console.log('HTTP server closed');
