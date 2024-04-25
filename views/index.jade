@@ -10,22 +10,19 @@ html(lang="en")
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
       .container
         a.navbar-brand(href='#') Alex Blass
-        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
-          span.navbar-toggler-icon
-        #navbarNav.collapse.navbar-collapse.d-flex.justify-content-end
-          ul.navbar-nav
-            li.nav-item
-              a.nav-link(href='/') Home
-            li.nav-item
-              a.nav-link(href='#about') About
-            li.nav-item
-              a.nav-link(href='#portfolio') Portfolio
-            li.nav-item
-              a.nav-link(href='#contact') Contact
-            // Add GitHub link with image and provide right margin
-            li.nav-item.mr-3
-              a.nav-link(href='https://github.com/a26blass', target='_blank')
-                img(src='/images/github-mark-white.png', alt='GitHub', width='30', height='30')
+        ul.navbar-nav.ml-auto
+          li.nav-item
+            a.nav-link(href='/') Home
+          li.nav-item
+            a.nav-link(href='#about') About
+          li.nav-item
+            a.nav-link(href='#portfolio') Portfolio
+          li.nav-item
+            a.nav-link(href='#contact') Contact
+          // Add GitHub link with image and provide right margin
+          li.nav-item.mr-3
+            a.nav-link(href='https://github.com/a26blass', target='_blank')
+              img(src='/images/github-mark-white.png', alt='GitHub', width='30', height='30')
 
     // About Section
     section#about.container.py-5
