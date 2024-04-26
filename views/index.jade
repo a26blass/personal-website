@@ -103,5 +103,6 @@ html(lang="en")
     script.
       setTimeout(function() {
         var confirmationOverlay = document.getElementById('confirmation-overlay');
-        confirmationOverlay.style.display = 'none';
+        if (confirmationOverlay != null)
+          confirmationOverlay.style.display = 'none';
       }, 5000);
