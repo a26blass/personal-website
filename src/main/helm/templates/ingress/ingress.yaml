@@ -3,9 +3,17 @@ kind: Ingress
 metadata:
   name: site-ingress
   namespace: default
+  annotations:
+    cert-manager.io/issuer: "cert-staging"
 spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - alexblass.me
+    secretName: cert-prod-tls
   rules:
-    - http:
+    - host: alexblass.me
+      http:
         paths:
           - path: /
             pathType: Prefix
@@ -14,6 +22,4 @@ spec:
                 name: testapp-service
                 port:
                   number: 80
-  tls:
-    - secretName: cert-testing
 
