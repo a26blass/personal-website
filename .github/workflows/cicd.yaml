@@ -34,7 +34,7 @@ jobs:
         uses: tj-actions/changed-files@v41
         with:
           files: |
-            src/main/helm/**
+            helm/**
     outputs:
       site-changed: ${{ steps.changed-site-files.outputs.any_changed }}
       infra-changed: ${{ steps.changed-infra-files.outputs.any_changed }}
@@ -81,7 +81,7 @@ jobs:
       - name: Update deployment
         if: needs.check-changed-files.outputs.site-changed == 'true'
         run: |
-          sed -i 's|image:.*|image: gcr.io/${{ env.GCP_PROJECT_ID }}/${{ env.IMAGE_NAME }}:${{ env.DOCKER_TAG }}|' src/main/helm/templates/deployment.yaml
+          sed -i 's|image:.*|image: gcr.io/${{ env.GCP_PROJECT_ID }}/${{ env.IMAGE_NAME }}:${{ env.DOCKER_TAG }}|' helm/templates/deployment.yaml
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
         with:
