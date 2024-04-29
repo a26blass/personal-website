@@ -34,7 +34,7 @@ app.post('/submit', function(req, res) {
   var email = req.body.email; // Get email from form data
   var message = req.body.message; // Get message from form data
 
-  console.log('New Message: ' + name + ' :: ' + email + ' :: ' + message)
+  console.log('New Message:: ' + name + ' :: ' + email + ' :: ' + message)
   
   // Handle the form data (TODO)
   
