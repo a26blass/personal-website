@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: testapp-container
-          image: gcr.io/personal-website-421100/testapp:0.0.8
+          image: gcr.io/personal-website-421100/personal-site:bc048038d24b
           ports:
             - containerPort: 8080
 
