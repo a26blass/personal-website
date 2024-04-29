@@ -4,13 +4,15 @@ metadata:
   name: site-ingress
   namespace: default
   annotations:
-    cert-manager.io/issuer: "cert-staging"
+    cert-manager.io/cluster-issuer: "cert-staging"
+    cert-manager.io/issue-temporary-certificate: "true"
+    acme.cert-manager.io/http01-edit-in-place: "true"
 spec:
   ingressClassName: nginx
   tls:
   - hosts:
     - alexblass.me
-    secretName: cert-prod-tls
+    secretName: cert-staging-tls
   rules:
     - host: alexblass.me
       http:
