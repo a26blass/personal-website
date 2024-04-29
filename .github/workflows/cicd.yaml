@@ -96,6 +96,6 @@ jobs:
           needs.check-changed-files.outputs.site-changed == 'true' ||
           (needs.build-push-image.result == 'skipped' && needs.check-changed-files.outputs.infra-changed == 'true')
         run: |
-          helm dependency build && helm upgrade --install website src/main/helm --set image.tag=${{ env.DOCKER_TAG }}
+          cd src/main/helm && helm dependency build && helm upgrade --install website . --set image.tag=${{ env.DOCKER_TAG }}
 
 
