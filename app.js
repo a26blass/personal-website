@@ -60,7 +60,7 @@ app.post('/submit', function(req, res) {
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error("Error sending email: ", error, " PASSWORD: " + process.env.GMAIL_PASSWORD);
+      console.error("Error sending email: ", error);
     } else {
       console.log("Email sent: ", info.response);
     }
