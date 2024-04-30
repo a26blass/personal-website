@@ -67,7 +67,7 @@ app.post('/submit', function(req, res) {
   });
     
   // Render the page with the confirmation message
-  res.render('index', { title: 'Form Submitted', confirmation: 'Form submitted successfully!', submitted: true });
+  res.render('index', { title: 'Form Submitted!', confirmation: 'Form submitted successfully!', submitted: true });
 });
 
 // catch 404 and forward to error handler
