@@ -78,6 +78,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Create Gmail App Password Kubernetes Secret
+        run: |
+          kubectl create secret generic gmail-secret --from-literal=GMAIL_PASSWORD="${{ secrets.GOOGLE_APP_PASSWORD }}"
       - name: Update deployment
         if: needs.check-changed-files.outputs.site-changed == 'true'
         run: |

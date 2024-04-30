@@ -1,3 +1,4 @@
+// Default services are defined below
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -6,6 +7,20 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+
+// Custom services are defined below
+const nodemailer = require("nodemailer");
+
+const transporter = nodemailer.createTransport({
+  service: "Gmail",
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  auth: {
+    user: "alexblass.me@gmail.com",
+    pass: "process.env.GMAIL_PASSWORD",
+  },
+});
 
 var app = express();
 
@@ -35,9 +50,22 @@ app.post('/submit', function(req, res) {
   var message = req.body.message; // Get message from form data
 
   console.log('New Message:: ' + name + ' :: ' + email + ' :: ' + message)
-  
-  // Handle the form data (TODO)
-  
+
+  const mailOptions = {
+    from: "alexblass.me@gmail.com",
+    to: "alexblass.me@gmail.com",
+    subject: "New Message From " + email,
+    text: "Name: " + name + "\n" + message
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error("Error sending email: ", error);
+    } else {
+      console.log("Email sent: ", info.response);
+    }
+  });
+    
   // Render the page with the confirmation message
   res.render('index', { title: 'Form Submitted', confirmation: 'Form submitted successfully!', submitted: true });
 });
