@@ -21,7 +21,7 @@ spec:
             - name: GMAIL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: gmail-password
+                  name: gmail-secret
                   key: GMAIL_PASSWORD
 
 
