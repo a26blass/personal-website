@@ -94,6 +94,7 @@ jobs:
       - name: Create Gmail App Password Kubernetes Secret
         run: |
           kubectl create secret generic gmail-secret --from-literal=GMAIL_PASSWORD="${{ secrets.GOOGLE_APP_PASSWORD }}"
+        ignore_exit_code: true
       - name: Deploy the new site to the cluster with helm
         if: |
           needs.check-changed-files.outputs.site-changed == 'true' ||
