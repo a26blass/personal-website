@@ -78,9 +78,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Create Gmail App Password Kubernetes Secret
-        run: |
-          kubectl create secret generic gmail-secret --from-literal=GMAIL_PASSWORD="${{ secrets.GOOGLE_APP_PASSWORD }}"
       - name: Update deployment
         if: needs.check-changed-files.outputs.site-changed == 'true'
         run: |
@@ -94,6 +91,9 @@ jobs:
         with:
           cluster_name: ${{ env.GCP_CLUSTER_NAME }}
           location: ${{ env.GCP_REGION }}
+      - name: Create Gmail App Password Kubernetes Secret
+        run: |
+          kubectl create secret generic gmail-secret --from-literal=GMAIL_PASSWORD="${{ secrets.GOOGLE_APP_PASSWORD }}"
       - name: Deploy the new site to the cluster with helm
         if: |
           needs.check-changed-files.outputs.site-changed == 'true' ||
