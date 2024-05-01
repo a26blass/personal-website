@@ -18,10 +18,10 @@ spec:
           ports:
             - containerPort: 8080
           env:
-            - name: GMAIL_PASSWORD
+            - name: EMAIL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: gmail-secret
-                  key: GMAIL_PASSWORD
+                  name: email-secret
+                  key: EMAIL_PASSWORD
 
 

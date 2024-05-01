@@ -12,13 +12,12 @@ var usersRouter = require('./routes/users');
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-  service: "Gmail",
-  host: "smtp.gmail.com",
+  host: "mail.privateemail.com",
   port: 465,
   secure: true,
   auth: {
-    user: "alexblass.me@gmail.com",
-    pass: "process.env.GMAIL_PASSWORD",
+    user: "alexblass@alexblass.me",
+    pass: "process.env.EMAIL_PASSWORD",
   },
 });
 
@@ -52,7 +51,7 @@ app.post('/submit', function(req, res) {
   console.log('New Message:: ' + name + ' :: ' + email + ' :: ' + message)
 
   const mailOptions = {
-    from: "alexblass.me@gmail.com",
+    from: "alexblass@alexblass.me",
     to: "alexblass.me@gmail.com",
     subject: "New Message From " + email,
     text: "Name: " + name + "\n" + message
