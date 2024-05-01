@@ -54,19 +54,26 @@ app.post('/submit', function(req, res) {
     from: "alexblass@alexblass.me",
     to: "alexblass.me@gmail.com",
     subject: "New Message From " + email,
-    text: "Name: " + name + "\n" + message
+    text: name + " has sent you a message! Here it is:" + "\n\n" + message + "\n\n" + "Reply to: " + email
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.error("Error sending email: ", error);
+      // Set color and confirmation message for error
+      const color = 'red';
+      const confirmationMessage = 'There was an error sending your message, please reach out to me directly at alexblass.me@gmail.com';
+      // Render the page with an error message
+      res.render('index', { title: 'Form Submission Failed', confirmationMessage, color, submitted: true });
     } else {
       console.log("Email sent: ", info.response);
+      // Set color and confirmation message for success
+      const color = 'green';
+      const confirmationMessage = 'Form submitted successfully!';
+      // Render the page with the confirmation message
+      res.render('index', { title: 'Form Submitted!', confirmationMessage, color, submitted: true });
     }
   });
-    
-  // Render the page with the confirmation message
-  res.render('index', { title: 'Form Submitted!', confirmation: 'Form submitted successfully!', submitted: true });
 });
 
 // catch 404 and forward to error handler

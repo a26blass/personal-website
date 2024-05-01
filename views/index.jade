@@ -86,9 +86,9 @@ html(lang="en")
 
     // Popup overlay for form submission confirmation
     if submitted
-      #confirmation-overlay.overlay
+      #confirmation-overlay.overlay(style=`background-color: ${color}`)
         .confirmation-content
-          p.confirmation.text Form submitted successfully!
+          p.confirmation.text #{confirmationMessage}
 
     footer.container.text-center.py-3
       p Created by Alex Blass, updated April 2024 
@@ -105,4 +105,4 @@ html(lang="en")
         var confirmationOverlay = document.getElementById('confirmation-overlay');
         if (confirmationOverlay != null)
           confirmationOverlay.style.display = 'none';
-      }, 5000);
+      }, 10000);
