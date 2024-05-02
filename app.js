@@ -48,8 +48,6 @@ app.post('/submit', function(req, res) {
   var email = req.body.email; // Get email from form data
   var message = req.body.message; // Get message from form data
 
-  console.log('New Message:: ' + name + ' :: ' + email + ' :: ' + message)
-
   const mailOptions = {
     from: "alexblass@alexblass.me",
     to: "alexblass.me@gmail.com",

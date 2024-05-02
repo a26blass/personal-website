@@ -5,7 +5,9 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 ENV NODE_ENV=production
-ENV GMAIL_PASSWORD=$GMAIL_PASSWORD
+
+# For local testing purposes, can inject email password directly into docker env
+ENV EMAIL_PASSWORD=$EMAIL_PASSWORD
 
 RUN npm install
 
