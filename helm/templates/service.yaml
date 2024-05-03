@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: testapp-service
+  name: site-service
 spec:
   selector:
-    app: testapp
+    app: site
   ports:
     - name: "http-endpoint"
       protocol: TCP

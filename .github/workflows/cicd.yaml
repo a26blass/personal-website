@@ -91,9 +91,12 @@ jobs:
         with:
           cluster_name: ${{ env.GCP_CLUSTER_NAME }}
           location: ${{ env.GCP_REGION }}
-      - name: Create Gmail App Password Kubernetes Secret
+      - name: Create Email Password Kubernetes Secret
         run: |
           kubectl create secret generic email-secret --from-literal=EMAIL_PASSWORD="${{ secrets.PERSONAL_EMAIL_PASSWORD }}" --dry-run=client -o yaml | kubectl apply -f -
+      - name: Create Email Username Kubernetes Secret
+        run: |
+          kubectl create secret generic email-username --from-literal=EMAIL_USERNAME="${{ secrets.EMAIL_USERNAME }}" --dry-run=client -o yaml | kubectl apply -f -
       - name: Deploy the new site to the cluster with helm
         if: |
           needs.check-changed-files.outputs.site-changed == 'true' ||

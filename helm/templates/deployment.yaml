@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-deployment
+  name: site-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: testapp
+      app: site
   template:
     metadata:
       labels:
-        app: testapp
+        app: site
     spec:
       containers:
-        - name: testapp-container
+        - name: site-container
           image: gcr.io/personal-website-421100/personal-site:bc048038d24b
           ports:
             - containerPort: 8080
@@ -23,5 +23,10 @@ spec:
                 secretKeyRef:
                   name: email-secret
                   key: EMAIL_PASSWORD
+            - name: EMAIL_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: email-username
+                  key: EMAIL_USERNAME
 
 
