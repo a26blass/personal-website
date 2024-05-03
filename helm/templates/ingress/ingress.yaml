@@ -9,6 +9,8 @@ metadata:
     acme.cert-manager.io/http01-edit-in-place: "true"
 spec:
   ingressClassName: nginx
+  loadBalancer:
+    ip: 35.185.36.92
   tls:
   - hosts:
     - alexblass.me
