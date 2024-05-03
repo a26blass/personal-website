@@ -21,7 +21,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: testapp-service
+                name: site-service
                 port:
                   number: 80
 
