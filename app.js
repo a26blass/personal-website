@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: "alexblass@alexblass.me",
+    user: process.env.EMAIL_USERNAME,
     pass: process.env.EMAIL_PASSWORD,
   },
 });
@@ -49,7 +49,7 @@ app.post('/submit', function(req, res) {
   var message = req.body.message; // Get message from form data
 
   const mailOptions = {
-    from: "alexblass@alexblass.me",
+    from: process.env.EMAIL_USERNAME,
     to: "alexblass.me@gmail.com",
     subject: "New Message From " + email,
     text: name + " has sent you a message! Here it is:" + "\n\n" + message + "\n\n" + "Reply to: " + email
