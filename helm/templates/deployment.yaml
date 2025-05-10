@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: site-container
-          image: gcr.io/personal-website-421100/personal-site:bc048038d24b
+          image: a26blass/personal-site:latest
           ports:
             - containerPort: 8080
           env:

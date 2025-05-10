@@ -4,19 +4,17 @@ metadata:
   name: site-ingress
   namespace: default
   annotations:
-    cert-manager.io/cluster-issuer: "cert-prod"
+    cert-manager.io/cluster-issuer: "cert-staging"
     cert-manager.io/issue-temporary-certificate: "true"
     acme.cert-manager.io/http01-edit-in-place: "true"
 spec:
-  ingressClassName: nginx
-  loadBalancer:
-    ip: 35.185.36.92
+  ingressClassName: traefik
   tls:
   - hosts:
-    - alexblass.me
-    secretName: cert-prod-tls
+    - alexblass.net
+    secretName: cert-staging-tls
   rules:
-    - host: alexblass.me
+    - host: alexblass.net
       http:
         paths:
           - path: /
