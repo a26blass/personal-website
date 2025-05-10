@@ -90,10 +90,10 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// Handle SIGTERM 
+// Handle SIGTERM
 process.on('SIGTERM', () => {
   console.info('Received SIGTERM signal');
-  
+
   // Perform cleanup tasks here
 
   server.close(() => {
