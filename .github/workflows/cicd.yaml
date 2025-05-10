@@ -33,6 +33,7 @@ jobs:
         with:
           files: |
             helm/**
+            helm/**/*
 
     outputs:
       site-changed: ${{ steps.changed-site-files.outputs.any_changed }}
