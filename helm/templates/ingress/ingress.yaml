@@ -1,4 +1,4 @@
-# Ingress.yaml - May 2025, Alex Blass
+# Ingress.yaml - May 2025, Alex Blass - 
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
