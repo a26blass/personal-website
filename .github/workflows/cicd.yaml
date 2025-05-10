@@ -33,7 +33,9 @@ jobs:
         with:
           files: |
             helm/**
-            helm/**/*
+            helm/ingress/**
+            helm/cert/**
+            helm/middleware/**
 
     outputs:
       site-changed: ${{ steps.changed-site-files.outputs.any_changed }}
