@@ -4,15 +4,17 @@ metadata:
   name: site-ingress
   namespace: default
   annotations:
-    cert-manager.io/cluster-issuer: "cert-staging"
+    cert-manager.io/cluster-issuer: "cert-prod"
     cert-manager.io/issue-temporary-certificate: "true"
     acme.cert-manager.io/http01-edit-in-place: "true"
+    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-to-https@kubernetescrd
+
 spec:
   ingressClassName: traefik
   tls:
   - hosts:
     - alexblass.net
-    secretName: cert-staging-tls
+    secretName: cert-prod-tls
   rules:
     - host: alexblass.net
       http:

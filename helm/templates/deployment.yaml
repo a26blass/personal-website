@@ -11,10 +11,13 @@ spec:
     metadata:
       labels:
         app: site
+      annotations:
+        rollme: "{{ now | unixEpoch }}"
     spec:
       containers:
         - name: site-container
           image: a26blass/personal-site:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:

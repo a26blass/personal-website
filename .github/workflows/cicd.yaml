@@ -11,7 +11,7 @@ env:
 
 jobs:
   check-changed-files:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -39,7 +39,7 @@ jobs:
       infra-changed: ${{ steps.changed-infra-files.outputs.any_changed }}
 
   build-and-push:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: check-changed-files
     if: needs.check-changed-files.outputs.site-changed == 'true'
     steps:
@@ -48,9 +48,24 @@ jobs:
       - name: Log in to Docker Hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
-      - name: Build and push image (by commit and latest)
+      - name: Build and push Docker image
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.DOCKER_TAG }} -t ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest .
           docker push ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.DOCKER_TAG }}
           docker push ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+
+  deploy:
+    runs-on: self-hosted
+    needs: [check-changed-files, build-and-push]
+    if: |
+      (needs.build-and-push.result == 'success' && needs.check-changed-files.outputs.site-changed == 'true') ||
+      (needs.build-and-push.result == 'skipped' && needs.check-changed-files.outputs.infra-changed == 'true')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Redeploy via Helm
+        run: |
+          cd ~/my-website/personal-website/helm
+          helm upgrade website . --reuse-values --set image.tag=latest
 
