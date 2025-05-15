@@ -3,7 +3,12 @@ kind: Deployment
 metadata:
   name: site-deployment
 spec:
-  replicas: 1
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
   selector:
     matchLabels:
       app: site
@@ -20,6 +25,13 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 3
           env:
             - name: EMAIL_PASSWORD
               valueFrom:
@@ -31,5 +43,4 @@ spec:
                 secretKeyRef:
                   name: email-username
                   key: EMAIL_USERNAME
-
 
