@@ -62,7 +62,7 @@ jobs:
     needs: [check-changed-files, build-and-push]
     if: |
       (needs.build-and-push.result == 'success' && needs.check-changed-files.outputs.site-changed == 'true') ||
-      (needs.build-and-push.result == 'skipped' && needs.check-changed-files.outputs.infra-changed == 'true') ||
+      (needs.build-and-push.result == 'skipped' && needs.check-changed-files.outputs.infra-changed == 'true')
     steps:
       - name: Checkout
         uses: actions/checkout@v4
