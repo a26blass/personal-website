@@ -3,8 +3,10 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     title #{title} 
+    // Add Bootstrap CDN for styling
     link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
     link(rel='stylesheet', href='./stylesheets/style.css')
+    // Add CSS for confirmation overlay
     link(rel='stylesheet', href='./stylesheets/confirmation.css')
   body
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
@@ -22,26 +24,85 @@ html(lang="en")
               a.nav-link(href='#portfolio') Portfolio
             li.nav-item.d-none.d-lg-block
               a.nav-link(href='#contact') Contact
+            // Add GitHub link with image and provide right margin
             li.nav-item.ml-3
               a.nav-link(href='https://github.com/a26blass', target='_blank')
                 img(src='/images/github-mark-white.png', alt='GitHub', width='30', height='30')
 
-    // WIP Section
-    .container.d-flex.justify-content-center.align-items-center.mt-5(style='min-height: 60vh')
-      h1.text-muted WIP
+    // About Section
+    section#about.container.py-5
+      h2 About Me
+      p I'm a Computer Science student at Carnegie Mellon University and a TA for 15-122 Principles of Imperative Computation.
+      
+    // Portfolio Section
+    section#portfolio.container.py-5
+      h2 Portfolio
+      .row
+        .col-md-6
+          .card
+            .card-container
+              h6.card-title.text-center Spring 2024
+              .card-body
+                p.card-text.text-center 
+                  a(href='https://www.cs.cmu.edu/~msakr/15619-s20/') Cloud Computing (15-319) 
+                p.card-text.text-left • Hands-on experience with public cloud infrastructures (AWS, Azure, GCP)
+                p.card-text.text-left • Proficiency in deploying auto-scaled, load-balanced applications using VMs, Docker, and Kubernetes
+                p.card-text.text-left • Exploration of distributed cloud-storage abstractions and programming models
+                p.card-text.text-left 
+                  | • For a proof of concept, see 
+                  a(href='https://github.com/a26blass/personal-website') the source code for this site, 
+                  | which is hosted on GKE and managed by Helm. I use Github Actions for a CI/CD workflow
+
+        .col-md-6
+          .card
+            .card-container
+              h6.card-title.text-center July 2023 - Present
+              .card-body
+                p.card-text-h.text-center 
+                  a(href='https://www.cs.cmu.edu/~15122/') TA for Principles of Imperative Computation 
+                p.card-text.text-left • Lead labs and recitation sessions, host office hours and optional review sessions, grade student work, and work on improving course infrastructure and content 
+                p.card-text.text-left 
+                  | • Develop the course 
+                  a(href='https://github.com/cmu15122/q-prime') office hours queue website, 
+                  | which streamlines office hours for students
+                p.card-text.text-left • Administrate the lab check in process
+
+
+    // Contact Section
+    section#contact.container.py-5
+      h2 Contact Me
+      p Have a question or want to work together? Feel free to reach out to me!
+      form(action='/submit', method='post')
+        .form-group
+          label(for='name') Name
+          input#name.form-control(type='text', name='name', placeholder='Enter your name')
+        .form-group
+          label(for='email') Email
+          input#email.form-control(type='email', name='email', placeholder='Enter your email')
+        .form-group
+          label(for='message') Message
+          textarea#message.form-control(name='message', rows='3', placeholder='Enter your message')
+        button.btn.btn-primary(type='submit') Submit
+
+    // Popup overlay for form submission confirmation
+    if submitted
+      #confirmation-overlay.overlay(style=`background-color: ${color}`)
+        .confirmation-content
+          p.confirmation.text #{confirmationMessage}
 
     footer.container.text-center.py-3
-      p Created by Alex Blass, updated May 14th, 2025 
+      p Created by Alex Blass, updated April 2024 
       ul.list-inline
         li.list-inline-item
           a(href='https://github.com/a26blass', target='_blank') GitHub
         li.list-inline-item
           a(href='https://linkedin.com/in/alexander-blass-251b8a258', target='_blank') LinkedIn
+        // Add more social media links
 
+    // Script for removing confirmation overlay after 5 seconds
     script.
       setTimeout(function() {
         var confirmationOverlay = document.getElementById('confirmation-overlay');
         if (confirmationOverlay != null)
           confirmationOverlay.style.display = 'none';
       }, 10000);
-
