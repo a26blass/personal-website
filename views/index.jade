@@ -11,7 +11,9 @@ html(lang="en")
   body
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
       .container
-        a.navbar-brand(href='#') Alex Blass
+        a.navbar-brand(href='#')
+          | Alex Blass
+          small.d-block.text-muted Software Engineering Consultant @ Broadridge Financial
         button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
           span.navbar-toggler-icon
         #navbarNav.collapse.navbar-collapse
@@ -32,46 +34,98 @@ html(lang="en")
     // About Section
     section#about.container.py-5
       h2 About Me
-      p I'm a Computer Science student at Carnegie Mellon University and a TA for 15-122 Principles of Imperative Computation.
-      
+      p I'm a Computer Science student at Carnegie Mellon University and a Software Engineering consultant at Broadridge Financial. I focus on systems - compilers, distributed systems, and infrastructure - and I also serve as a TA for 15-122 Principles of Imperative Computation.
+
     // Portfolio Section
     section#portfolio.container.py-5
       h2 Portfolio
       .row
+        // Compiler Design (15-411) — no links (confidential)
+        .col-md-6
+          .card
+            .card-container
+              h6.card-title.text-center Fall 2024 - Spring 2025
+              .card-body
+                p.card-text.text-center Compiler Design (15-411)
+                p.card-text.text-left • Built a C0→x86 compiler in OCaml with SSA-inspired IR and control-flow graphs
+                p.card-text.text-left • Implemented analyses/passes: SCCP, DCE, LICM, inlining with cycle checks, DAG simplification
+                p.card-text.text-left • Register allocation with coalescing and coloring; correct calling convention & codegen
+                p.card-text.text-left • Emphasis on rigorous testing, undefined behavior handling, and performance
+
+        // Distributed Systems (15-440) — used Go; no links (confidential)
+        .col-md-6
+          .card
+            .card-container
+              h6.card-title.text-center Fall 2024
+              .card-body
+                p.card-text.text-center Distributed Systems (15-440) — Go
+                p.card-text.text-left • Implemented a key-value server, Raft consensus (log replication, elections, persistence), and Bitcoin-style components
+                p.card-text.text-left • Focus on failures, partitions, timeouts; added fault injection and deterministic tests
+                p.card-text.text-left • Profiling and optimization for throughput and tail latency
+
+      .row.mt-4
+        // Cloud Computing (public course page link is fine)
         .col-md-6
           .card
             .card-container
               h6.card-title.text-center Spring 2024
               .card-body
                 p.card-text.text-center 
-                  a(href='https://www.cs.cmu.edu/~msakr/15619-s20/') Cloud Computing (15-319) 
-                p.card-text.text-left • Hands-on experience with public cloud infrastructures (AWS, Azure, GCP)
-                p.card-text.text-left • Proficiency in deploying auto-scaled, load-balanced applications using VMs, Docker, and Kubernetes
-                p.card-text.text-left • Exploration of distributed cloud-storage abstractions and programming models
+                  a(href='https://www.cs.cmu.edu/~msakr/15619-s20/', target='_blank') Cloud Computing (15-319)
+                p.card-text.text-left • Hands-on with AWS/Azure/GCP; autoscaling and load balancing with VMs, Docker, Kubernetes
+                p.card-text.text-left • Explored distributed cloud-storage abstractions and programming models
                 p.card-text.text-left 
                   | • For a proof of concept, see 
-                  a(href='https://github.com/a26blass/personal-website') the source code for this site, 
-                  | which is hosted on GKE and managed by Helm. I use Github Actions for a CI/CD workflow
+                  a(href='https://github.com/a26blass/personal-website', target='_blank') the source code for this site, 
+                  | hosted on GKE and managed by Helm with GitHub Actions CI/CD
 
+        // Teaching (15-122)
         .col-md-6
           .card
             .card-container
               h6.card-title.text-center July 2023 - Present
               .card-body
                 p.card-text-h.text-center 
-                  a(href='https://www.cs.cmu.edu/~15122/') TA for Principles of Imperative Computation 
-                p.card-text.text-left • Lead labs and recitation sessions, host office hours and optional review sessions, grade student work, and work on improving course infrastructure and content 
+                  a(href='https://www.cs.cmu.edu/~15122/', target='_blank') TA for Principles of Imperative Computation (15-122)
+                p.card-text.text-left • Lead labs/recitations, hold office hours and reviews, grade assignments and exams
                 p.card-text.text-left 
-                  | • Develop the course 
-                  a(href='https://github.com/cmu15122/q-prime') office hours queue website, 
-                  | which streamlines office hours for students
-                p.card-text.text-left • Administrate the lab check in process
+                  | • Contribute to the course 
+                  a(href='https://github.com/cmu15122/q-prime', target='_blank') office hours queue, 
+                  | streamlining student support
+                p.card-text.text-left • Help maintain and improve course infrastructure
 
+      .row.mt-4
+        // Work Experience — Broadridge
+        .col-md-12
+          .card
+            .card-container
+              h6.card-title.text-center Work Experience
+              .card-body
+                p.card-text.text-left 
+                  strong Broadridge Financial Solutions — Software Engineering Consultant (Aug 2024 – Present)
+                p.card-text.text-left • Built a GitLab RAG search tool to help analysts navigate large codebases via semantic search and summarization
+                p.card-text.text-left • Developed analytics pipelines and dashboards (including text sentiment analysis) to surface insights from client meeting notes
+                p.card-text.text-left • Improved developer workflows and CI/CD reliability; emphasized secure, maintainable, and observable systems
+                hr
+                p.card-text.text-left 
+                  strong Broadridge Financial Solutions — Software Engineering Intern (Jun 2024 – Aug 2024)
+                p.card-text.text-left • Prototyped internal tools for code discovery and documentation; collaborated with cross-functional stakeholders
+                p.card-text.text-left • Shipped features under tight timelines with code reviews, testing, and metrics
+
+      .row.mt-4
+        // Additional Highlights
+        .col-md-12
+          .card
+            .card-container
+              h6.card-title.text-center Additional Highlights
+              .card-body
+                p.card-text.text-left • Systems interests: compilers, storage, distributed consensus, networking
+                p.card-text.text-left • Tooling: Go, OCaml, C/C++, Python; Docker, Kubernetes, Helm; GitHub Actions
+                p.card-text.text-left • Infra: self-hosted CI/CD, container registries, observability, and IaC
 
     // Contact Section
     section#contact.container.py-5
       h2 Contact Me
-      p Have a question or want to work together? Feel free to reach out to me!
       form(action='/submit', method='post')
         .form-group
           label(for='name') Name
